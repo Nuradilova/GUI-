@@ -12,7 +12,8 @@ root.geometry('500x500')
    # file = open(filepath, 'r')
     #print(file.read())
     #file.close()
-
+class MyInterface():
+ pass
 
 
 button_quit = Button(root, text = "Quit Button", command = root.quit)
