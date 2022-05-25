@@ -5,13 +5,14 @@ from PIL import Image, ImageTk
 root = Tk()
 root.geometry('500x500')
 
-#def openFile():
- #   filepath = filedialog.askopenfilename(initialdir='C:\\Users\\user\\python files', title='Open file', 
-  #                                          filetypes=(('image files', "*.jpg"), ("all files", "*.*")) )
+def openFile():
+   filepath = filedialog.askopenfilename(initialdir='C:\\Users\\user\\python files', title='Open file', 
+                                          filetypes=(('image files', "*.jpg"), ("all files", "*.*")) )
     
-   # file = open(filepath, 'r')
-    #print(file.read())
-    #file.close()
+   file = open(filepath, 'r')
+   print(file.read())
+   file.close()
+   
 class MyInterface():
  pass
 
@@ -32,8 +33,8 @@ my_label.grid(row=4, column=0)
 
 
 
-#button = Button(text = 'open', command = openFile)
-#button.pack()
+button = Button(text = 'open', command = openFile)
+button.grid(row=5, column=0)
 root.mainloop()
 
 
