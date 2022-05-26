@@ -13,6 +13,11 @@ def openFile():
    print(file.read())
    file.close()
    
+def black_white():
+   my_pic= Image.open('ala.png')
+   bw_image = my_pic.convert('L')
+   bw_image.show() 
+   
 class MyInterface():
  pass
 
@@ -20,7 +25,7 @@ class MyInterface():
 button_quit = Button(root, text = "Quit Button", command = root.quit)
 button_quit.grid(row=3, column=0)
 
-button_1 = Button(root, text= "Button1")
+button_1 = Button(root, text= "Button1", command= black_white())
 button_2 = Button(root, text= "Button2")
 
 button_1.grid(row=1, column=0)
