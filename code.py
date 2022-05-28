@@ -1,17 +1,28 @@
 from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
+from cProfile import label
+from cgitb import text
+from turtle import bgcolor, color
+from setuptools import Command
+from PIL import ImageFont
+from PIL import ImageDraw
 
 root = Tk()
-root.geometry('500x500')
+root.geometry('700x700')
+
+imag= PhotoImage(file = 'C:\\Users\\user\\python files\\ala.png')
+root.iconphoto(False, imag)
+
+t=Text(root, height=5, width=4)
+l=Label(root,text = '#Select a file to use other commands', background='#D2E6FF', borderwidth=3)
+l.config(font=('Courier', 10))
+l.grid(row=1, column=1)
 
 def openFile():
-   filepath = filedialog.askopenfilename(initialdir='C:\\Users\\user\\python files', title='Open file', 
-                                          filetypes=(('image files', "*.jpg"), ("all files", "*.*")) )
-    
-   file = open(filepath, 'r')
-   print(file.read())
-   file.close()
+   global filepath
+   filepath = filedialog.askopenfilename(initialdir='C:\\Users\\user\\python files', title='Open file')
+   photo = Image.open(filepath)
    
 def grey():
     my_pic= Image.open(filepath)
@@ -36,6 +47,38 @@ def get_width():
     except ValueError:
         print("Width can be only Number")
 
+def get_width():
+    try:
+        int(my_box1.get())
+        answer1.config(text="Available value!", bg='#A9CDD5')
+    except ValueError:
+        print("Width can be only Number")
+
+
+def get_height():
+    try:
+        int(my_box.get())
+        answer2.config(text="Available value!", bg='#A9CDD5')
+    except ValueError:
+        print("Height can be only Number")
+
+
+def add_watermark():
+    im = Image.open(filepath)
+    w, h = im.size
+    color = 'black'
+    draw = ImageDraw.Draw(im)
+    text = "AlaToo"
+    font = ImageFont.truetype('arial', (w+h)//22)
+    textwidth, textheight = draw.textsize(text, font)
+    # calculate the x,y coordinates of the text
+    margin = 20
+    x = w - textwidth - margin
+    y = h - textheight - margin
+    # draw watermark in the bottom right corner
+    draw.text((x, y), text, font=font, fill='#FA05B0', stroke_fill='purple', bgcolor = 'grey')
+    im.show()
+    im.save('with_watermark.png')
 
 button_quit = Button(root, text = "Quit Button", command = root.quit)
 button_quit.grid(row=3, column=0)
