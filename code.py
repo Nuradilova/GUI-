@@ -13,13 +13,28 @@ def openFile():
    print(file.read())
    file.close()
    
-def black_white():
-   my_pic= Image.open('ala.png')
-   bw_image = my_pic.convert('L')
-   bw_image.show() 
-   
-class MyInterface():
- pass
+def grey():
+    my_pic= Image.open(filepath)
+    bw_image = my_pic.convert('L')
+    bw_image.show() 
+    bw_image.save('image.png')
+
+def resized():
+    my_pic= Image.open(filepath) 
+    resized = my_pic.resize((int(my_box1.get()),int(my_box.get())), Image.Resampling.LANCZOS)  
+    new_pic = ImageTk.PhotoImage(resized)
+    
+    label1 = Label(image=new_pic)
+    label1.image = new_pic
+    label1.grid(row=20, column=2)
+
+
+def get_width():
+    try:
+        int(my_box1.get())
+        answer1.config(text="Available value!")
+    except ValueError:
+        print("Width can be only Number")
 
 
 button_quit = Button(root, text = "Quit Button", command = root.quit)
