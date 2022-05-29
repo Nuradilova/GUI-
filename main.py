@@ -7,7 +7,8 @@ from PIL import Image, ImageTk
 from setuptools import Command
 from PIL import ImageFont
 from PIL import ImageDraw
-import sys, os
+import sys
+import os
 
 cwd = os.getcwd()
 print(cwd)
@@ -16,11 +17,11 @@ root = Tk()
 root.geometry('700x700')
 root.config(bg='#A9CDD5')
 
-imag= PhotoImage(file = 'f'{cwd}/ala.png'')
+imag = PhotoImage(file=f'{cwd}/ala.png')
 root.iconphoto(False, imag)
 
-t=Text(root, height=5, width=4)
-l=Label(root,text = '#Select a file to use other commands',
+t = Text(root, height=5, width=4)
+l = Label(root,text=' #Select a file to use other commands' ,
         background='#D2E6FF', borderwidth=3)
 l.config(font=('Courier', 10))
 l.grid(row=1, column=1)
@@ -31,12 +32,13 @@ class Open:
     def open_file():
         global filepath
         filepath = \
-            filedialog.askopenfilename(initialdir='C:\\Users\\user\\python files'
-                , title='Open file')
+            filedialog.askopenfilename(
+                initialdir='C:\\Users\\user\\python files'
+                ,title='Open file')
         photo = Image.open(filepath)
 
     click_btn = \
-        PhotoImage(file='file=f'{cwd}/image3.png'
+        PhotoImage(file=f'{cwd}/image3.png'
                    )
     my_lbl = Label(text='Click to the button to open file',
                    image=click_btn)
@@ -53,7 +55,7 @@ class Open:
         )
     open_button.grid(row=1, column=2, ipadx=10, ipady=10, sticky='nsew')
 
-   
+
 class Grayscale:
 
     def grey():
@@ -63,7 +65,7 @@ class Grayscale:
         bw_image.save('image.png')
 
     click_gray = \
-        PhotoImage(file='file=f'{cwd}/bl.png'
+        PhotoImage(file=f'{cwd}/bl.png'
                    )
     my_lbl3 = Label(text='lknlk', image=click_gray)
     global gray_button
@@ -111,7 +113,7 @@ class Watermark:
         im.save('with_watermark.png')
 
     click_wtm = \
-        PhotoImage(file='file=f'{cwd}/water.png'
+        PhotoImage(file=f'{cwd}/water.png'
                    )
     my_lbl1 = Label(text='Click to the button to add watermark',
                     image=click_wtm)
@@ -158,7 +160,7 @@ class Resize:
             print('Height can be only Number')
 
     click_crop = \
-        PhotoImage(file='file=f'{cwd}/crop.png'
+        PhotoImage(file=f'{cwd}/crop.png'
                    )
     my_lbl2 = Label(text='Click to crop', image=click_crop)
     global crop_button
@@ -201,7 +203,7 @@ class Resize:
 
 
 click_quit = \
-    PhotoImage(file='file=f'{cwd}/quit.png')
+    PhotoImage(file=f'{cwd}/quit.png')
 my_lbl2 = Label(text='Click to quit', image=click_quit)
 button_quit = Button(
     root,
@@ -235,9 +237,3 @@ for button in button_list:
     column_number += 1
 
 root.mainloop()
-
-
-
-
-
-
